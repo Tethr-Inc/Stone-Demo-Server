@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :stone_demo_server, StoneDemoServer.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "rEaQCPZ5tAIxcquTrKUvX62gHgjMCi7kqzJjPuZEB36irRuS1iubEnFrwMFOs8SR",
+  secret_key_base: "9stK6GB9PTBh6OPhQuS+N6tTFd+RMWzGJDLaxFPNzSEaItS7YRR8hPhqAaDSNoIJ",
   render_errors: [view: StoneDemoServer.ErrorView, accepts: ~w(html json)],
   pubsub: [name: StoneDemoServer.PubSub,
            adapter: Phoenix.PubSub.PG2]

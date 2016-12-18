@@ -36,7 +36,7 @@ defmodule StoneDemoServer.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_stone_demo_server_key",
-    signing_salt: "e19SNHYD"
+    signing_salt: "mUHT6xTX"
 
   plug StoneDemoServer.Router
 end

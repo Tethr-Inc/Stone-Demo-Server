@@ -19,25 +19,13 @@ defmodule StoneDemoServer.ChatChannel do
     {:noreply, socket}
   end
 
-  def handle_in("new:msg", %{"body" => body, "images" => images}, socket) when is_map(images) do
-    Logger.error "+++++++++++"
-    images
-    |> Map.values
-    |> Enum.each(fn image ->
-      {:ok, data} = Base.decode64(image)
-      Logger.warn inspect data
-    end)
-
-    {:reply, :ok, socket}
-  end
-
-  def handle_in("new:msg", %{"body" => _body} = payload, socket) do
+  def handle_in("new:msg", %{"body" => body}, socket) do
     Logger.error "-------------"
-    broadcast_payload = Map.merge payload, %{
-      user_id: socket.assigns.user_id
+    broadcast socket, "new:msg", %{
+      sender: socket.assigns.user_id,
+      body: body
     }
-
-    broadcast socket, "new:msg", broadcast_payload
+    
     {:reply, :ok, socket}
   end
 

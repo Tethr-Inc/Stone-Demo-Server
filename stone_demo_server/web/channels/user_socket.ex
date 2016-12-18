@@ -41,5 +41,11 @@ defmodule StoneDemoServer.UserSocket do
   #     StoneDemoServer.Endpoint.broadcast("users_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(socket), do: "users_socket:#{socket.assigns.user_id}"
+  def id(socket) do
+    if is_nil(socket.assigns.user_id) do
+      nil
+    else
+      "users_socket:#{socket.assigns.user_id}"
+    end
+  end
 end
